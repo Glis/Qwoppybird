@@ -5,6 +5,8 @@ public class JumpingScript : MonoBehaviour
 {
 	public KeyCode flap;
 	public KeyCode flop;
+	public AudioSource flapSound;
+	public AudioSource flopSound;
 	public float speed;
 //	private float curving = 90f;
 
@@ -14,17 +16,19 @@ public class JumpingScript : MonoBehaviour
 	void Update(){
 		if(!GameStateScript.gameStarted){
 			if(Input.GetKeyDown(flap)){
-				rigidbody2D.gravityScale = 2.0f;
+				rigidbody2D.gravityScale = 3.0f;
 				GameStateScript.gameStarted = true;
 				GameStateScript.initialTap = true;
+				flopSound.Play();
 				wasFlap = true;	
 			}
 		} else{
 			if(!GameStateScript.gameOver){
 				if(Input.GetKeyDown(flap)){
 					if(!wasFlap){
-						float velY = (speed / 3);
+						float velY = /*rigidbody2D.velocity.y - */(speed / 5f);
 						rigidbody2D.velocity = new Vector2(0, velY);
+						flopSound.Play();
 						//				rigidbody2D.AddTorque(-curving);
 						//				rigidbody2D.angularVelocity = curving;
 					}
@@ -36,6 +40,7 @@ public class JumpingScript : MonoBehaviour
 						velY = 10f;
 					}
 					rigidbody2D.velocity = new Vector2(0, velY);
+					flapSound.Play();
 					//			rigidbody2D.AddTorque(curving * 4f);
 					//			rigidbody2D.angularVelocity = -curving;
 					wasFlap = false;
