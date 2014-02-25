@@ -16,7 +16,7 @@ public class GameStateScript : MonoBehaviour
 	// Update is called once per frame
 	void Update(){
 		if(initialTap){
-			InvokeRepeating("addHop", 4.1f, 2.0f);
+//			InvokeRepeating("addHop", 4.1f, 2.0f);
 			initialTap = false;
 		}
 
@@ -36,7 +36,7 @@ public class GameStateScript : MonoBehaviour
 		hops = 0; 			
 		Application.LoadLevel("game");
 	}
-	void addHop(){
+	public void addHop(){
 		hops++;
 	}
 

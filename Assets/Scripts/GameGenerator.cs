@@ -10,13 +10,13 @@ public class GameGenerator : MonoBehaviour
 
 	// Use this for initialization
 	void Start(){
-		InvokeRepeating("generateFloor", 0f, 1.75f);
+		InvokeRepeating("generateFloor", 0f, 2.0f);
 	}
 	
 	// Update is called once per frame
 	void Update(){
 		if(GameStateScript.initialTap){
-			InvokeRepeating("generatePipe", 0.5f, 2.0f);
+			InvokeRepeating("generatePipe", 0.3f, 1.8f);
 		}
 		if(GameStateScript.gameOver){
 			CancelInvoke();
